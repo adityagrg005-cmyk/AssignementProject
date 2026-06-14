@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>WebDev Hub — Learn Full Stack</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+:root{
+  --primary:#2563EB;--primary-light:#EFF6FF;--primary-dark:#1D4ED8;
+  --yellow:#F59E0B;--yellow-light:#FFFBEB;
+  --pink:#EC4899;--green:#10B981;--purple:#8B5CF6;
+  --bg:#EFF6FF;--card:#fff;--muted:#F1F5FD;--border:#E4ECFC;
+  --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+  --radius-card:24px;--radius-btn:14px;--radius-pill:50px;
+  --shadow-clay:0 8px 32px rgba(37,99,235,.13),0 2px 8px rgba(37,99,235,.08);
+  --shadow-hover:0 16px 48px rgba(37,99,235,.2),0 4px 16px rgba(37,99,235,.12);
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+h1,h2,h3,h4,h5,h6,.brand{font-family:'Baloo 2',sans-serif}
+
+/* NAV */
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1.5px solid var(--border);padding:.9rem 0;position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.4rem;font-weight:800;color:var(--primary);text-decoration:none;letter-spacing:-.5px}
+.brand span{color:var(--yellow)}
+.nav-links{display:flex;gap:.25rem;flex-wrap:wrap}
+.nav-links a{text-decoration:none;padding:.45rem .9rem;border-radius:var(--radius-pill);font-size:.87rem;font-weight:500;color:var(--text-2);transition:var(--transition)}
+.nav-links a:hover,.nav-links a.active{background:var(--primary-light);color:var(--primary);font-weight:600}
+.nav-badge{display:inline-flex;align-items:center;gap:.35rem}
+.nav-badge svg{width:14px;height:14px}
+
+/* HERO */
+.hero{max-width:1200px;margin:0 auto;padding:5rem 1.5rem 4rem;text-align:center}
+.hero-tag{display:inline-block;background:var(--primary-light);color:var(--primary);border:1.5px solid #BFDBFE;border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1.25rem}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:1.25rem;letter-spacing:-.03em}
+.hero h1 span{color:var(--primary)}
+.hero p{color:var(--text-2);font-size:1.1rem;max-width:580px;margin:0 auto 2.5rem;line-height:1.7}
+.btn-group{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:var(--radius-btn);font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:var(--transition);font-family:'Inter',sans-serif}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 16px rgba(37,99,235,.35)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4)}
+.btn-outline{background:#fff;color:var(--primary);border:2px solid var(--border)}
+.btn-outline:hover{border-color:var(--primary);transform:translateY(-2px)}
+
+/* CARDS GRID */
+.cards-grid{max-width:1200px;margin:0 auto;padding:0 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.lang-card{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);padding:2rem;box-shadow:var(--shadow-clay);transition:var(--transition);text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
+.lang-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;opacity:.07;transition:var(--transition)}
+.lang-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.lc-html::before{background:#E34F26}
+.lc-css::before{background:#264DE4}
+.lc-js::before{background:#F7DF1E}
+.lc-bs::before{background:#7952B3}
+.card-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.25rem;font-weight:800;font-family:'Baloo 2',sans-serif}
+.ci-html{background:#FFF0EB;color:#E34F26}
+.ci-css{background:#EBF0FF;color:#264DE4}
+.ci-js{background:#FFFBE6;color:#B45309}
+.ci-bs{background:#F3EBFF;color:#7952B3}
+.lang-card h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.lang-card p{color:var(--text-2);font-size:.88rem;line-height:1.6;margin-bottom:1.25rem}
+.card-link{color:var(--primary);font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:.35rem}
+.card-link svg{width:14px;height:14px;transition:var(--transition)}
+.lang-card:hover .card-link svg{transform:translateX(3px)}
+
+/* STATS ROW */
+.stats-row{max-width:1200px;margin:0 auto;padding:0 1.5rem 4rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.stat-card{background:#fff;border-radius:20px;border:1.5px solid var(--border);padding:1.5rem;text-align:center;box-shadow:var(--shadow-clay)}
+.stat-num{font-size:2rem;font-weight:800;color:var(--primary);font-family:'Baloo 2',sans-serif}
+.stat-lbl{font-size:.82rem;color:var(--text-2);margin-top:.25rem}
+
+/* FOOTER */
+footer{background:#fff;border-top:1.5px solid var(--border);padding:2rem 1.5rem;text-align:center}
+footer p{color:var(--text-3);font-size:.85rem}
+footer span{color:var(--primary);font-weight:600}
+
+/* BLOBS */
+.blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.25;pointer-events:none;z-index:0;animation:drift 8s ease-in-out infinite alternate}
+.blob-1{width:400px;height:400px;background:#2563EB;top:-100px;left:-100px;animation-delay:0s}
+.blob-2{width:300px;height:300px;background:#F59E0B;bottom:-80px;right:-80px;animation-delay:-4s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,20px) scale(1.05)}}
+main{position:relative;z-index:1}
+
+@media(max-width:640px){.nav-links a{padding:.35rem .65rem;font-size:.8rem}.hero{padding:3rem 1rem 2.5rem}}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">WebDev<span>Hub</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="html.html">
+        <span class="nav-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          HTML
+        </span>
+      </a>
+      <a href="css.html">
+        <span class="nav-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20"/></svg>
+          CSS
+        </span>
+      </a>
+      <a href="javascript.html">
+        <span class="nav-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          JavaScript
+        </span>
+      </a>
+      <a href="bootstrap.html">
+        <span class="nav-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h6a2 2 0 0 1 0 4H7z"/><path d="M7 12h7a2 2 0 0 1 0 4H7z"/></svg>
+          Bootstrap
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="hero-tag">Full Stack Learning Hub</div>
+    <h1>Master the Building Blocks<br>of the <span>Modern Web</span></h1>
+    <p>Explore HTML, CSS, JavaScript and Bootstrap — the four core technologies every web developer needs to know. Interactive demos, clear examples, and hands-on learning.</p>
+    <div class="btn-group">
+      <a href="html.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Start Learning
+      </a>
+      <a href="javascript.html" class="btn btn-outline">Try Interactive Demos</a>
+    </div>
+  </section>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-lbl">Technologies Covered</div></div>
+    <div class="stat-card"><div class="stat-num">20+</div><div class="stat-lbl">Live Code Examples</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Interactive Demos</div></div>
+    <div class="stat-card"><div class="stat-num">Free</div><div class="stat-lbl">Always & Forever</div></div>
+  </div>
+
+  <div class="cards-grid">
+    <a href="html.html" class="lang-card lc-html">
+      <div class="card-icon ci-html">HTML</div>
+      <h3>HTML — Structure</h3>
+      <p>The skeleton of every webpage. Learn tags, elements, semantic markup, forms, and how browsers render your content.</p>
+      <span class="card-link">Explore HTML <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="css.html" class="lang-card lc-css">
+      <div class="card-icon ci-css">CSS</div>
+      <h3>CSS — Style</h3>
+      <p>Make it beautiful. Master selectors, flexbox, grid, animations, and an interactive color playground to see CSS live.</p>
+      <span class="card-link">Explore CSS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="javascript.html" class="lang-card lc-js">
+      <div class="card-icon ci-js">JS</div>
+      <h3>JavaScript — Logic</h3>
+      <p>Bring pages to life. Events, DOM manipulation, functions, and interactive demos — a calculator, todo list, and more.</p>
+      <span class="card-link">Explore JS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="bootstrap.html" class="lang-card lc-bs">
+      <div class="card-icon ci-bs">BS</div>
+      <h3>Bootstrap — Framework</h3>
+      <p>Build fast and responsive. Grids, components, utilities — and an interactive theme builder to design with Bootstrap live.</p>
+      <span class="card-link">Explore Bootstrap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+  </div>
+</main>
+
+<footer><p>Built by <span>Sanjog Thapa</span> · CET138 Full Stack Development · ISMT College</p></footer>
+</body>
+</html>

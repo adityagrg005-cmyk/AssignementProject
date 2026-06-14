@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bootstrap — WebDev Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+:root{
+  --primary:#7952B3;--primary-light:#F3EBFF;--primary-dark:#5A3A8A;
+  --bg:#FAF7FF;--card:#fff;--muted:#F5F0FF;--border:#E0D0FF;
+  --text:#150A2E;--text-2:#4A3575;--text-3:#9B84C8;
+  --radius-card:24px;--radius-btn:14px;--radius-pill:50px;
+  --shadow:0 8px 32px rgba(121,82,179,.1),0 2px 8px rgba(121,82,179,.06);
+  --shadow-hover:0 16px 48px rgba(121,82,179,.2);
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;margin:0;padding:0}
+h1,h2,h3,h4,h5,h6,.brand{font-family:'Baloo 2',sans-serif}
+
+/* NAV */
+.sitenav{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1.5px solid var(--border);padding:.9rem 0;position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{font-size:1.3rem;font-weight:800;color:#2563EB;text-decoration:none}
+.brand span{color:#F59E0B}
+.nav-links{display:flex;gap:.2rem;flex-wrap:wrap}
+.nav-links a{text-decoration:none;padding:.4rem .85rem;border-radius:var(--radius-pill);font-size:.85rem;font-weight:500;color:#475569;transition:var(--transition)}
+.nav-links a:hover{background:#EFF6FF;color:#2563EB}
+.nav-links a.active{background:var(--primary-light);color:var(--primary);font-weight:700}
+
+/* HERO */
+.page-hero{max-width:1200px;margin:0 auto;padding:4rem 1.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:768px){.page-hero{grid-template-columns:1fr;padding:2.5rem 1rem 2rem}}
+.hero-tag{display:inline-block;background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem}
+.hero-left h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1rem}
+.hero-left h1 span{color:var(--primary)}
+.hero-left p{color:var(--text-2);line-height:1.75;font-size:1rem;margin-bottom:1.5rem}
+.pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.pill{background:var(--muted);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem .85rem;font-size:.78rem;font-weight:600}
+.hero-code{background:#1E1E2E;border-radius:20px;padding:1.5rem;font-family:'Cascadia Code','Fira Code',Consolas,monospace;font-size:.8rem;line-height:1.85;box-shadow:0 16px 48px rgba(0,0,0,.25);position:relative}
+.dots{position:absolute;top:12px;left:16px;display:flex;gap:6px}
+.dots span{width:10px;height:10px;border-radius:50%;display:inline-block}
+.d1{background:#FF5F57}.d2{background:#FEBC2E}.d3{background:#28C840}
+.code-body{margin-top:36px}
+.tag-c{color:#F28FAD}.attr-c{color:#89DCEB}.val-c{color:#A6E3A1}.cm{color:#6C7086;font-style:italic}.txt-c{color:#CDD6F4}
+.sbtn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:var(--radius-btn);font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:var(--transition);font-family:'Inter',sans-serif;text-decoration:none;background:var(--primary);color:#fff;box-shadow:0 4px 16px rgba(121,82,179,.35)}
+.sbtn:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+/* SECTIONS */
+.section{max-width:1200px;margin:0 auto;padding:3rem 1.5rem}
+.sec-label{display:inline-flex;align-items:center;gap:.5rem;background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:.5rem;letter-spacing:-.02em}
+.sec-sub{color:var(--text-2);font-size:.95rem;margin-bottom:2.5rem;max-width:560px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+.scard{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);padding:1.75rem;box-shadow:var(--shadow);transition:var(--transition)}
+.scard:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.scard-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.2rem}
+.scard h4{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.scard p{color:var(--text-2);font-size:.875rem;line-height:1.6}
+
+/* THEME BUILDER */
+.builder{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.builder-header{background:var(--muted);border-bottom:1.5px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.builder-header h3{font-size:1rem;font-weight:700;color:var(--text)}
+.builder-body{display:grid;grid-template-columns:260px 1fr;min-height:500px}
+@media(max-width:768px){.builder-body{grid-template-columns:1fr}}
+.builder-controls{border-right:1.5px solid var(--border);padding:1.5rem;background:var(--muted);overflow-y:auto}
+.ctrl-section{margin-bottom:1.5rem}
+.ctrl-section h5{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.ctrl-row{margin-bottom:.85rem}
+.ctrl-row label{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;color:var(--text-2);margin-bottom:.4rem}
+.ctrl-row label span{color:var(--primary);font-weight:700}
+.color-swatches{display:flex;flex-wrap:wrap;gap:.4rem}
+.swatch{width:28px;height:28px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:var(--transition)}
+.swatch:hover,.swatch.active{border-color:#fff;box-shadow:0 0 0 2px var(--primary);transform:scale(1.1)}
+.theme-slider{width:100%;height:5px;border-radius:4px;outline:none;border:none;cursor:pointer;-webkit-appearance:none;appearance:none;background:linear-gradient(to right,var(--primary),#a78bfa)}
+.preview-pane{padding:1.5rem;overflow-y:auto}
+.preview-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);margin-bottom:1rem}
+
+/* BS PREVIEW COMPONENTS */
+#bsPreview .preview-navbar{border-radius:12px;padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;transition:all .35s}
+#bsPreview .pnav-brand{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1rem}
+#bsPreview .pnav-links{display:flex;gap:.5rem;flex-wrap:wrap}
+#bsPreview .pnav-link{padding:.3rem .7rem;border-radius:8px;font-size:.82rem;font-weight:500;text-decoration:none;cursor:pointer}
+#bsPreview .hero-block{border-radius:16px;padding:2rem 1.5rem;margin-bottom:1rem;text-align:center;transition:all .35s}
+#bsPreview .hero-block h2{font-family:'Baloo 2',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+#bsPreview .hero-block p{font-size:.88rem;margin-bottom:1.25rem;opacity:.85}
+#bsPreview .hero-btns{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap}
+#bsPreview .pbtn{padding:.55rem 1.25rem;border-radius:10px;font-weight:700;font-size:.85rem;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+#bsPreview .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:1rem}
+@media(max-width:500px){#bsPreview .card-row{grid-template-columns:1fr}}
+#bsPreview .mini-card{border-radius:12px;padding:1rem;transition:all .35s;border:1.5px solid transparent}
+#bsPreview .mini-card h5{font-size:.88rem;font-weight:700;margin-bottom:.35rem}
+#bsPreview .mini-card p{font-size:.78rem;opacity:.75}
+#bsPreview .badge-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+#bsPreview .pbadge{padding:.25rem .75rem;border-radius:50px;font-size:.75rem;font-weight:700}
+
+/* GRID EXPLAINER */
+.grid-vis{display:grid;gap:8px;margin-bottom:1rem;padding:1rem;background:var(--muted);border-radius:14px;border:1.5px solid var(--border);transition:all .3s}
+.grid-cell{padding:.6rem;border-radius:8px;background:var(--primary);color:#fff;font-size:.78rem;font-weight:600;text-align:center;opacity:.85}
+
+/* CLASS DEMO TABS */
+.class-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.class-tab{padding:.4rem .9rem;border-radius:var(--radius-pill);font-size:.82rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:#fff;color:var(--text-2);transition:var(--transition);font-family:'Inter',sans-serif}
+.class-tab:hover,.class-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.class-output{background:var(--muted);border-radius:14px;padding:1.25rem;border:1.5px solid var(--border);min-height:80px;display:flex;align-items:center;flex-wrap:wrap;gap:.5rem}
+
+footer{background:#fff;border-top:1.5px solid var(--border);padding:1.75rem;text-align:center;color:var(--text-3);font-size:.85rem}
+footer span{color:var(--primary);font-weight:600}
+.page-nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:2rem 1.5rem 3rem;flex-wrap:wrap;gap:1rem}
+.page-nav a{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.4rem;border-radius:var(--radius-btn);font-weight:700;font-size:.88rem;text-decoration:none;border:2px solid var(--border);color:var(--text-2);background:#fff;transition:var(--transition)}
+.page-nav a:hover{border-color:var(--primary);color:var(--primary)}
+.page-nav a.home{background:var(--primary);color:#fff;border-color:var(--primary)}
+.page-nav a.home:hover{background:var(--primary-dark)}
+</style>
+</head>
+<body>
+<nav class="sitenav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">WebDev<span>Hub</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="javascript.html">JavaScript</a>
+      <a href="bootstrap.html" class="active">Bootstrap</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-left">
+    <div class="hero-tag">Framework #4</div>
+    <h1>Bootstrap — Build <span>Fast</span> & Responsive</h1>
+    <p>Bootstrap is the world's most popular CSS framework. It gives you a ready-made grid system, beautiful pre-built components, and responsive utilities so you can build professional websites in minutes — not days.</p>
+    <div class="pill-row">
+      <span class="pill">Grid System</span>
+      <span class="pill">Components</span>
+      <span class="pill">Utilities</span>
+      <span class="pill">Responsive</span>
+    </div>
+    <a href="#builder" class="sbtn"><i class="fas fa-paint-brush"></i> Open Theme Builder</a>
+  </div>
+  <div>
+    <div class="hero-code">
+      <div class="dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <div class="code-body">
+<span class="cm">&lt;!-- Bootstrap grid --&gt;</span><br>
+<span class="tag-c">&lt;div</span> <span class="attr-c">class</span>=<span class="val-c">"container"</span><span class="tag-c">&gt;</span><br>
+&nbsp;&nbsp;<span class="tag-c">&lt;div</span> <span class="attr-c">class</span>=<span class="val-c">"row"</span><span class="tag-c">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-c">&lt;div</span> <span class="attr-c">class</span>=<span class="val-c">"col-md-8"</span><span class="tag-c">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="txt-c">Main content</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-c">&lt;/div&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-c">&lt;div</span> <span class="attr-c">class</span>=<span class="val-c">"col-md-4"</span><span class="tag-c">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="txt-c">Sidebar</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-c">&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag-c">&lt;/div&gt;</span><br>
+<span class="tag-c">&lt;/div&gt;</span><br><br>
+<span class="cm">&lt;!-- Button component --&gt;</span><br>
+<span class="tag-c">&lt;button</span> <span class="attr-c">class</span>=<span class="val-c">"btn btn-primary"</span><span class="tag-c">&gt;</span><br>
+&nbsp;&nbsp;<span class="txt-c">Click Me</span><br>
+<span class="tag-c">&lt;/button&gt;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS BOOTSTRAP -->
+<section class="section">
+  <div class="sec-label"><i class="fas fa-info-circle"></i> What is Bootstrap?</div>
+  <h2 class="sec-title">Why Developers Love Bootstrap</h2>
+  <p class="sec-sub">Bootstrap removes the need to write repetitive CSS from scratch. Just add class names to your HTML and get professional results instantly.</p>
+  <div class="grid-3">
+    <div class="scard"><div class="scard-icon" style="background:#F3EBFF;color:#7952B3"><i class="fas fa-th"></i></div><h4>12-Column Grid</h4><p>Bootstrap's grid system divides the page into 12 columns. Use <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">col-md-6</code> for half-width, <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">col-md-4</code> for thirds.</p></div>
+    <div class="scard"><div class="scard-icon" style="background:#ECFDF5;color:#10B981"><i class="fas fa-mobile-alt"></i></div><h4>Mobile First</h4><p>Breakpoints: <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">sm</code> (576px), <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">md</code> (768px), <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">lg</code> (992px), <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">xl</code> (1200px). Designs adapt to any screen.</p></div>
+    <div class="scard"><div class="scard-icon" style="background:#EBF0FF;color:#264DE4"><i class="fas fa-puzzle-piece"></i></div><h4>Components</h4><p>Ready-made navbars, cards, modals, dropdowns, alerts, badges, carousels — all styled and accessible out of the box.</p></div>
+    <div class="scard"><div class="scard-icon" style="background:#FFF0EB;color:#E34F26"><i class="fas fa-wrench"></i></div><h4>Utility Classes</h4><p>Hundreds of utility classes for spacing (<code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">p-3</code>, <code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">m-2</code>), text (<code style="background:var(--muted);padding:.1rem .3rem;border-radius:4px">text-center</code>), color, display and more.</p></div>
+    <div class="scard"><div class="scard-icon" style="background:#FFFBE6;color:#B45309"><i class="fas fa-bolt"></i></div><h4>Fast Prototyping</h4><p>Build a fully responsive multi-page website in hours instead of days. Perfect for projects, portfolios, and client demos.</p></div>
+    <div class="scard"><div class="scard-icon" style="background:#F3EBFF;color:#7952B3"><i class="fas fa-palette"></i></div><h4>Customisable</h4><p>Override Bootstrap's default variables with your own colors, fonts, and spacing using CSS custom properties or Sass.</p></div>
+  </div>
+</section>
+
+<!-- THEME BUILDER -->
+<section class="section" id="builder">
+  <div class="sec-label"><i class="fas fa-sliders-h"></i> Interactive</div>
+  <h2 class="sec-title">Live Bootstrap Theme Builder</h2>
+  <p class="sec-sub">Tweak the controls and watch a real Bootstrap-powered layout change in real time.</p>
+  <div class="builder">
+    <div class="builder-header">
+      <i class="fas fa-paint-brush" style="color:var(--primary)"></i>
+      <h3>Theme Controls</h3>
+      <span style="font-size:.8rem;color:var(--text-3);margin-left:auto">Changes apply instantly to the preview →</span>
+    </div>
+    <div class="builder-body">
+      <!-- Controls -->
+      <div class="builder-controls">
+        <div class="ctrl-section">
+          <h5>Primary Color</h5>
+          <div class="color-swatches" id="colorSwatches"></div>
+        </div>
+        <div class="ctrl-section">
+          <h5>Style</h5>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <button onclick="setStyle('flat')" id="sFlat" style="padding:.45rem .9rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.82rem;font-weight:600;cursor:pointer;text-align:left;font-family:'Inter',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="if(!this.classList.contains('active-style'))this.style.borderColor='var(--border)'">Flat / Minimal</button>
+            <button onclick="setStyle('glass')" id="sGlass" style="padding:.45rem .9rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.82rem;font-weight:600;cursor:pointer;text-align:left;font-family:'Inter',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="if(!this.classList.contains('active-style'))this.style.borderColor='var(--border)'">Glass / Frosted</button>
+            <button onclick="setStyle('bold')" id="sBold" style="padding:.45rem .9rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.82rem;font-weight:600;cursor:pointer;text-align:left;font-family:'Inter',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="if(!this.classList.contains('active-style'))this.style.borderColor='var(--border)'">Bold / Dark</button>
+          </div>
+        </div>
+        <div class="ctrl-section">
+          <h5>Border Radius</h5>
+          <div class="ctrl-row">
+            <label>Roundness <span id="radLabel">16px</span></label>
+            <input type="range" class="theme-slider" min="0" max="32" value="16" oninput="setRadius(this.value)">
+          </div>
+        </div>
+        <div class="ctrl-section">
+          <h5>Layout Mode</h5>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+            <button onclick="setLayout(3)" style="padding:.35rem .75rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">3 Cols</button>
+            <button onclick="setLayout(2)" style="padding:.35rem .75rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">2 Cols</button>
+            <button onclick="setLayout(1)" style="padding:.35rem .75rem;border-radius:8px;border:1.5px solid var(--border);background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif">1 Col</button>
+          </div>
+        </div>
+        <div class="ctrl-section">
+          <h5>Dark Mode</h5>
+          <label style="display:flex;align-items:center;gap:.65rem;cursor:pointer;font-size:.88rem;font-weight:500">
+            <input type="checkbox" id="darkToggle" onchange="toggleDark(this.checked)" style="width:16px;height:16px;accent-color:var(--primary)">
+            Enable dark background
+          </label>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="preview-pane" id="previewPane">
+        <div class="preview-label">Live Preview — Bootstrap Layout</div>
+        <div id="bsPreview">
+          <!-- Navbar -->
+          <div class="preview-navbar" id="pNavbar">
+            <span class="pnav-brand" id="pBrand">MyBrand</span>
+            <div class="pnav-links">
+              <span class="pnav-link" id="pL1">Home</span>
+              <span class="pnav-link" id="pL2">About</span>
+              <span class="pnav-link" id="pL3">Contact</span>
+            </div>
+          </div>
+          <!-- Hero -->
+          <div class="hero-block" id="pHero">
+            <h2 id="pHeroTitle">Welcome to My Website</h2>
+            <p id="pHeroSub">Built with Bootstrap — the world's most popular CSS framework.</p>
+            <div class="hero-btns">
+              <button class="pbtn" id="pBtn1">Get Started</button>
+              <button class="pbtn" id="pBtn2">Learn More</button>
+            </div>
+          </div>
+          <!-- Cards -->
+          <div class="card-row" id="pCardRow">
+            <div class="mini-card" id="pc1"><h5>Feature One</h5><p>Bootstrap makes responsive design easy and fast.</p></div>
+            <div class="mini-card" id="pc2"><h5>Feature Two</h5><p>Pre-built components save hours of development.</p></div>
+            <div class="mini-card" id="pc3"><h5>Feature Three</h5><p>12-column grid adapts to any screen size perfectly.</p></div>
+          </div>
+          <!-- Badges & Buttons -->
+          <div class="badge-row" id="pBadges">
+            <span class="pbadge" id="pb1">Responsive</span>
+            <span class="pbadge" id="pb2">Open Source</span>
+            <span class="pbadge" id="pb3">Components</span>
+            <span class="pbadge" id="pb4">Grid System</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRID EXPLAINER -->
+<section class="section">
+  <div class="sec-label"><i class="fas fa-th-large"></i> Grid System</div>
+  <h2 class="sec-title">The 12-Column Grid</h2>
+  <p class="sec-sub">Click any layout to see how Bootstrap's grid columns are divided across 12 equal units.</p>
+  <div class="scard">
+    <div class="class-tabs" id="gridTabs"></div>
+    <div class="grid-vis" id="gridVis"></div>
+    <div style="font-size:.8rem;color:var(--text-3)">Each colored block shows one Bootstrap column. All columns always add up to 12.</div>
+  </div>
+</section>
+
+<!-- UTILITY CLASS DEMO -->
+<section class="section">
+  <div class="sec-label"><i class="fas fa-tags"></i> Utility Classes</div>
+  <h2 class="sec-title">Bootstrap Utility Classes</h2>
+  <p class="sec-sub">Click any utility class to see what it does live in the preview box.</p>
+  <div class="scard">
+    <div class="class-tabs" id="utilTabs"></div>
+    <div class="class-output" id="utilOutput"></div>
+  </div>
+</section>
+
+<div class="page-nav">
+  <a href="javascript.html">← JavaScript</a>
+  <a href="index.html" class="home">🏠 Back to Home</a>
+</div>
+<footer><p>Built by <span>Sanjog Thapa</span> · CET138 Full Stack Development · ISMT College</p></footer>
+
+<script>
+// THEME BUILDER STATE
+let state={color:'#7952B3',colorLight:'#F3EBFF',colorDark:'#5A3A8A',radius:16,style:'flat',dark:false,cols:3};
+
+const colors=[
+  {name:'Purple',c:'#7952B3',l:'#F3EBFF',d:'#5A3A8A'},
+  {name:'Blue',c:'#2563EB',l:'#EFF6FF',d:'#1D4ED8'},
+  {name:'Teal',c:'#0D9488',l:'#CCFBF1',d:'#0F766E'},
+  {name:'Pink',c:'#DB2777',l:'#FCE7F3',d:'#BE185D'},
+  {name:'Orange',c:'#EA580C',l:'#FFF7ED',d:'#C2410C'},
+  {name:'Green',c:'#16A34A',l:'#F0FDF4',d:'#15803D'},
+  {name:'Red',c:'#DC2626',l:'#FEF2F2',d:'#B91C1C'},
+  {name:'Slate',c:'#334155',l:'#F1F5F9',d:'#1E293B'},
+];
+
+// Build swatches
+const sw=document.getElementById('colorSwatches');
+colors.forEach((cl,i)=>{
+  const s=document.createElement('div');
+  s.className='swatch'+(i===0?' active':'');
+  s.style.background=cl.c;
+  s.title=cl.name;
+  s.addEventListener('click',()=>{
+    document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));
+    s.classList.add('active');
+    state.color=cl.c;state.colorLight=cl.l;state.colorDark=cl.d;
+    applyTheme();
+  });
+  sw.appendChild(s);
+});
+
+function setStyle(s){
+  state.style=s;
+  ['sFlat','sGlass','sBold'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.classList.remove('active-style');
+    el.style.background='#fff';el.style.color='var(--text)';
+  });
+  const map={flat:'sFlat',glass:'sGlass',bold:'sBold'};
+  const el=document.getElementById(map[s]);
+  el.classList.add('active-style');
+  el.style.background=state.color;el.style.color='#fff';
+  applyTheme();
+}
+
+function setRadius(v){
+  state.radius=v;
+  document.getElementById('radLabel').textContent=v+'px';
+  applyTheme();
+}
+
+function setLayout(c){state.cols=c;applyTheme();}
+
+function toggleDark(v){state.dark=v;applyTheme();}
+
+function applyTheme(){
+  const {color,colorLight,colorDark,radius,style,dark,cols}=state;
+  const r=radius+'px';
+  const pane=document.getElementById('previewPane');
+
+  // Dark mode
+  pane.style.background=dark?'#0F172A':'';
+
+  // Navbar styles
+  const nav=document.getElementById('pNavbar');
+  const brand=document.getElementById('pBrand');
+  const links=['pL1','pL2','pL3'].map(id=>document.getElementById(id));
+
+  if(style==='flat'){
+    nav.style.background=color;nav.style.backdropFilter='';nav.style.boxShadow='none';nav.style.border='none';
+    brand.style.color='#fff';links.forEach(l=>{l.style.color='rgba(255,255,255,.8)';l.style.background='transparent'});
+  } else if(style==='glass'){
+    nav.style.background='rgba(255,255,255,.15)';nav.style.backdropFilter='blur(12px)';
+    nav.style.boxShadow='0 4px 24px rgba(0,0,0,.1)';nav.style.border='1px solid rgba(255,255,255,.3)';
+    brand.style.color=dark?'#fff':color;links.forEach(l=>{l.style.color=dark?'rgba(255,255,255,.8)':color;l.style.background='transparent'});
+  } else {
+    nav.style.background='#1E1E2E';nav.style.backdropFilter='';nav.style.boxShadow='0 2px 16px rgba(0,0,0,.3)';nav.style.border='none';
+    brand.style.color=color;links.forEach(l=>{l.style.color='rgba(255,255,255,.7)';l.style.background='transparent'});
+  }
+  nav.style.borderRadius=r;
+
+  // Hero
+  const hero=document.getElementById('pHero');
+  const ht=document.getElementById('pHeroTitle');
+  const hs=document.getElementById('pHeroSub');
+  if(style==='flat'){hero.style.background=colorLight;ht.style.color=colorDark;hs.style.color=color+'CC';}
+  else if(style==='glass'){hero.style.background=`linear-gradient(135deg,${color}22,${color}44)`;hero.style.backdropFilter='blur(8px)';hero.style.border=`1px solid ${color}44`;ht.style.color=dark?'#fff':colorDark;hs.style.color=dark?'rgba(255,255,255,.75)':color;}
+  else{hero.style.background=`linear-gradient(135deg,${colorDark},${color})`;ht.style.color='#fff';hs.style.color='rgba(255,255,255,.85)';}
+  hero.style.borderRadius=r;
+
+  // Hero buttons
+  const b1=document.getElementById('pBtn1');
+  const b2=document.getElementById('pBtn2');
+  if(style==='bold'){b1.style.background='#fff';b1.style.color=colorDark;b2.style.background='rgba(255,255,255,.2)';b2.style.color='#fff';b2.style.border='2px solid rgba(255,255,255,.5)';}
+  else{b1.style.background=color;b1.style.color='#fff';b1.style.border='none';b2.style.background='transparent';b2.style.color=style==='flat'?colorDark:dark?'#fff':colorDark;b2.style.border=`2px solid ${color}`;}
+  [b1,b2].forEach(b=>b.style.borderRadius=r);
+
+  // Cards
+  const cr=document.getElementById('pCardRow');
+  cr.style.gridTemplateColumns=cols===3?'repeat(3,1fr)':cols===2?'repeat(2,1fr)':'1fr';
+  ['pc1','pc2','pc3'].forEach((id,i)=>{
+    const c=document.getElementById(id);
+    if(i>=cols&&cols<3)c.style.display='none'; else c.style.display='';
+    c.style.borderRadius=r;
+    if(style==='flat'){c.style.background=colorLight;c.style.borderColor=color+'33';c.querySelector('h5').style.color=colorDark;c.querySelector('p').style.color=color;}
+    else if(style==='glass'){c.style.background=`rgba(255,255,255,${dark?'.08':'.6'})`;c.style.backdropFilter='blur(8px)';c.style.borderColor=color+'44';c.querySelector('h5').style.color=dark?'#fff':colorDark;c.querySelector('p').style.color=dark?'rgba(255,255,255,.6)':color+'AA';}
+    else{c.style.background='#1E293B';c.style.borderColor=color+'55';c.querySelector('h5').style.color='#fff';c.querySelector('p').style.color='rgba(255,255,255,.55)';}
+  });
+
+  // Badges
+  ['pb1','pb2','pb3','pb4'].forEach(id=>{
+    const b=document.getElementById(id);
+    b.style.background=style==='bold'?color:colorLight;
+    b.style.color=style==='bold'?'#fff':colorDark;
+    b.style.borderRadius=r;
+  });
+}
+
+applyTheme();
+
+// GRID LAYOUTS
+const layouts=[
+  {label:'12',cols:[12]},{label:'6+6',cols:[6,6]},{label:'4+4+4',cols:[4,4,4]},
+  {label:'3+3+3+3',cols:[3,3,3,3]},{label:'8+4',cols:[8,4]},{label:'3+6+3',cols:[3,6,3]},
+];
+const gt=document.getElementById('gridTabs');
+const gv=document.getElementById('gridVis');
+layouts.forEach((l,i)=>{
+  const btn=document.createElement('button');
+  btn.className='class-tab'+(i===0?' active':'');
+  btn.textContent='col-'+l.label;
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#gridTabs .class-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    gv.style.gridTemplateColumns=`repeat(12,1fr)`;
+    gv.innerHTML=l.cols.map((c,ci)=>`<div class="grid-cell" style="grid-column:span ${c};background:hsl(${ci*47+250},60%,55%)">col-${c}</div>`).join('');
+  });
+  gt.appendChild(btn);
+});
+document.querySelector('#gridTabs .class-tab').click();
+
+// UTILITY CLASSES
+const utils=[
+  {label:'btn-primary',html:'<button class="btn btn-primary">Primary Button</button>'},
+  {label:'btn-outline-*',html:'<button class="btn btn-outline-primary me-2">Outline</button><button class="btn btn-outline-danger">Danger</button>'},
+  {label:'badge',html:'<span class="badge bg-primary me-2">New</span><span class="badge bg-success me-2">Active</span><span class="badge bg-warning text-dark">Warning</span>'},
+  {label:'alert',html:'<div class="alert alert-success mb-2" style="font-size:.85rem">✓ Success! Operation completed.</div><div class="alert alert-danger mb-0" style="font-size:.85rem">✗ Error! Something went wrong.</div>'},
+  {label:'text-*',html:'<p class="text-primary fw-bold mb-1">text-primary fw-bold</p><p class="text-success mb-1">text-success</p><p class="text-danger mb-1">text-danger</p><p class="text-muted mb-0">text-muted</p>'},
+  {label:'d-flex',html:'<div class="d-flex gap-2 align-items-center"><div class="bg-primary text-white p-2 rounded">Flex 1</div><div class="bg-success text-white p-2 rounded">Flex 2</div><div class="bg-warning text-dark p-2 rounded">Flex 3</div></div>'},
+  {label:'p-* m-*',html:'<div class="p-3 m-2 bg-primary text-white rounded" style="display:inline-block">p-3 m-2</div><div class="p-1 m-4 bg-success text-white rounded" style="display:inline-block">p-1 m-4</div>'},
+  {label:'rounded-*',html:'<button class="btn btn-primary rounded-0 me-2">Sharp</button><button class="btn btn-primary rounded me-2">Normal</button><button class="btn btn-primary rounded-pill">Pill</button>'},
+];
+const ut=document.getElementById('utilTabs');
+const uo=document.getElementById('utilOutput');
+utils.forEach((u,i)=>{
+  const btn=document.createElement('button');
+  btn.className='class-tab'+(i===0?' active':'');
+  btn.textContent='.'+u.label;
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#utilTabs .class-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    uo.innerHTML=u.html;
+  });
+  ut.appendChild(btn);
+});
+document.querySelector('#utilTabs .class-tab').click();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

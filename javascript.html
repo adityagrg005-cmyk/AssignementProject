@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JavaScript — WebDev Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="javascript_style.css">
+<!-- <style>
+:root{
+  --primary:#B45309;--primary-light:#FFFBE6;--primary-dark:#92400E;
+  --yellow:#F59E0B;--yellow-light:#FEF3C7;
+  --bg:#FFFDF5;--card:#fff;--muted:#FFFBEB;--border:#FDE68A;
+  --text:#1C1007;--text-2:#78501A;--text-3:#B08040;
+  --radius-card:24px;--radius-btn:14px;--radius-pill:50px;
+  --shadow:0 8px 32px rgba(180,83,9,.1),0 2px 8px rgba(180,83,9,.06);
+  --shadow-hover:0 16px 48px rgba(180,83,9,.18);
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+h1,h2,h3,h4,h5,h6,.brand{font-family:'Baloo 2',sans-serif}
+nav{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1.5px solid var(--border);padding:.9rem 0;position:sticky;top:0;z-index:200}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{font-size:1.3rem;font-weight:800;color:#2563EB;text-decoration:none}
+.brand span{color:#F59E0B}
+.nav-links{display:flex;gap:.2rem;flex-wrap:wrap}
+.nav-links a{text-decoration:none;padding:.4rem .85rem;border-radius:var(--radius-pill);font-size:.85rem;font-weight:500;color:#475569;transition:var(--transition)}
+.nav-links a:hover{background:#EFF6FF;color:#2563EB}
+.nav-links a.active{background:var(--primary-light);color:var(--primary);font-weight:700}
+
+.page-hero{max-width:1200px;margin:0 auto;padding:4rem 1.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:768px){.page-hero{grid-template-columns:1fr;padding:2.5rem 1rem 2rem}}
+.hero-tag{display:inline-block;background:var(--yellow-light);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem}
+.hero-left h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1rem}
+.hero-left h1 span{color:var(--yellow)}
+.hero-left p{color:var(--text-2);line-height:1.75;font-size:1rem;margin-bottom:1.5rem}
+.pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.pill{background:var(--muted);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem .85rem;font-size:.78rem;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:var(--radius-btn);font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:var(--transition);font-family:'Inter',sans-serif;text-decoration:none}
+.btn-primary{background:var(--yellow);color:#1C1007;box-shadow:0 4px 16px rgba(245,158,11,.35)}
+.btn-primary:hover{background:#D97706;transform:translateY(-2px)}
+.hero-code{background:#1E1E2E;border-radius:20px;padding:1.5rem;font-family:'Cascadia Code','Fira Code',Consolas,monospace;font-size:.82rem;line-height:1.85;box-shadow:0 16px 48px rgba(0,0,0,.25);position:relative}
+.dots{position:absolute;top:12px;left:16px;display:flex;gap:6px}
+.dots span{width:10px;height:10px;border-radius:50%;display:inline-block}
+.d1{background:#FF5F57}.d2{background:#FEBC2E}.d3{background:#28C840}
+.code-body{margin-top:36px}
+.kw{color:#ff7b72}.str{color:#a5d6ff}.fn{color:#d2a8ff}.cm{color:#6C7086;font-style:italic}.num{color:#F8C555}.vc{color:#79c0ff}
+
+.section{max-width:1200px;margin:0 auto;padding:3rem 1.5rem}
+.sec-label{display:inline-flex;align-items:center;gap:.5rem;background:var(--yellow-light);color:var(--primary);border:1.5px solid var(--border);border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:.5rem;letter-spacing:-.02em}
+.sec-sub{color:var(--text-2);font-size:.95rem;margin-bottom:2.5rem;max-width:560px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+
+/* CODE + OUTPUT CARDS */
+.code-card{background:#1E1E2E;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.code-header{background:#2D2D3F;padding:.7rem 1.1rem;display:flex;align-items:center;justify-content:space-between}
+.code-dots{display:flex;gap:5px}
+.code-dots span{width:9px;height:9px;border-radius:50%}
+.code-title{color:#6C7086;font-size:.75rem;font-family:monospace}
+.code-block{padding:1.1rem 1.35rem;font-family:'Cascadia Code','Fira Code',Consolas,monospace;font-size:.8rem;line-height:1.8;overflow-x:auto;color:#CDD6F4}
+.btn-run{display:inline-flex;align-items:center;gap:.4rem;background:var(--yellow);color:#1C1007;border:none;border-radius:8px;padding:.4rem .9rem;font-size:.8rem;font-weight:700;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif;margin:0 1.25rem 1.1rem}
+.btn-run:hover{background:#D97706;transform:scale(1.04)}
+.output{background:#111827;border-top:1px solid #2D2D3F;padding:.85rem 1.25rem;font-family:monospace;font-size:.8rem;color:#10B981;display:none;white-space:pre;line-height:1.6}
+.output.show{display:block}
+
+/* DEMO CARD WRAPPER */
+.demo-wrap{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);padding:1.75rem;box-shadow:var(--shadow)}
+.demo-wrap h4{font-family:'Baloo 2',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1rem}
+
+/* CALCULATOR */
+.calc-screen{background:#111827;border-radius:14px;padding:1rem 1.25rem;text-align:right;margin-bottom:.85rem}
+.calc-expr{font-family:monospace;font-size:.8rem;color:#6C7086;min-height:18px}
+.calc-val{font-family:monospace;font-size:1.9rem;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cb{padding:.68rem;border:none;border-radius:9px;font-size:.95rem;font-weight:700;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif}
+.cb:hover{filter:brightness(1.15);transform:scale(1.05)}
+.cb:active{transform:scale(.95)}
+.cn{background:#1F2937;color:#e0e6f0}
+.co{background:#374151;color:var(--yellow)}
+.ceq{background:var(--yellow);color:#1C1007}
+.cc{background:#EF4444;color:#fff}
+.cbk{background:#374151;color:#e0e6f0}
+
+/* TODO */
+.todo-row{display:flex;gap:.5rem;margin-bottom:.85rem}
+.todo-inp{flex:1;background:#F9FAFB;border:1.5px solid var(--border);color:var(--text);border-radius:10px;padding:.5rem .9rem;font-size:.87rem;outline:none;font-family:'Inter',sans-serif}
+.todo-inp:focus{border-color:var(--yellow)}
+.todo-add{background:var(--yellow);color:#1C1007;border:none;border-radius:10px;padding:.5rem 1rem;font-weight:700;font-size:.87rem;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif}
+.todo-list{list-style:none;padding:0;margin:0 0 .75rem}
+.t-item{display:flex;align-items:center;gap:.55rem;padding:.5rem .75rem;background:#FFFBEB;border:1.5px solid var(--border);border-radius:9px;margin-bottom:.4rem;font-size:.87rem;animation:pop .2s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.t-item.done span{text-decoration:line-through;color:var(--text-3)}
+.t-item input[type=checkbox]{accent-color:var(--yellow);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.t-del{margin-left:auto;background:none;border:none;color:#EF4444;cursor:pointer;font-size:.85rem;padding:0}
+.t-count{font-size:.8rem;color:var(--text-3)}
+.t-count span{color:var(--primary);font-weight:700}
+
+/* QUIZ */
+.quiz-card{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);padding:1.75rem;box-shadow:var(--shadow)}
+.quiz-q{font-weight:700;font-size:1rem;margin-bottom:1rem;color:var(--text)}
+.quiz-opts{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem}
+.quiz-opt{padding:.65rem 1.1rem;border-radius:12px;border:1.5px solid var(--border);background:#FFFBEB;cursor:pointer;font-size:.87rem;text-align:left;font-family:'Inter',sans-serif;font-weight:500;transition:var(--transition)}
+.quiz-opt:hover{border-color:var(--yellow);background:var(--yellow-light)}
+.quiz-opt.correct{background:#ECFDF5;border-color:#10B981;color:#065F46;font-weight:700}
+.quiz-opt.wrong{background:#FEF2F2;border-color:#EF4444;color:#991B1B}
+.quiz-msg{font-size:.87rem;font-weight:600;min-height:24px}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem}
+.quiz-progress{font-size:.8rem;color:var(--text-3)}
+.quiz-score{font-size:.85rem;font-weight:700;color:var(--primary)}
+.qbtn{padding:.55rem 1.25rem;border-radius:10px;border:none;font-weight:700;font-size:.85rem;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif}
+.qbtn-primary{background:var(--yellow);color:#1C1007}
+.qbtn-primary:hover{background:#D97706}
+
+/* CONCEPT CARDS */
+.concept{background:var(--card);border-radius:var(--radius-card);border:1.5px solid var(--border);padding:1.75rem;box-shadow:var(--shadow);transition:var(--transition)}
+.concept:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.concept-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.2rem}
+.concept h4{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.concept p{color:var(--text-2);font-size:.875rem;line-height:1.6}
+
+footer{background:#fff;border-top:1.5px solid var(--border);padding:1.75rem;text-align:center;color:var(--text-3);font-size:.85rem}
+footer span{color:var(--primary);font-weight:600}
+.page-nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:2rem 1.5rem 3rem;flex-wrap:wrap;gap:1rem}
+.page-nav a{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.4rem;border-radius:var(--radius-btn);font-weight:700;font-size:.88rem;text-decoration:none;border:2px solid var(--border);color:var(--text-2);background:#fff;transition:var(--transition)}
+.page-nav a:hover{border-color:var(--yellow);color:var(--primary)}
+.page-nav a.next{background:var(--yellow);color:#1C1007;border-color:var(--yellow)}
+.page-nav a.next:hover{background:#D97706}
+</style> -->
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">WebDev<span>Hub</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="javascript.html" class="active">JavaScript</a>
+      <a href="bootstrap.html">Bootstrap</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-left">
+    <div class="hero-tag">Language #3</div>
+    <h1>JavaScript — The <span>Brain</span> of the Web</h1>
+    <p>JavaScript makes web pages alive. It responds to clicks, validates forms, fetches data, animates elements, and powers everything from simple buttons to full applications. Try the live projects below.</p>
+    <div class="pill-row">
+      <span class="pill">Variables</span>
+      <span class="pill">Functions</span>
+      <span class="pill">DOM Events</span>
+      <span class="pill">Arrays</span>
+      <span class="pill">Objects</span>
+    </div>
+    <a href="#projects" class="btn btn-primary"><i class="fas fa-bolt"></i> Try Live Projects</a>
+  </div>
+  <div>
+    <div class="hero-code">
+      <div class="dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
+      <div class="code-body">
+<span class="cm">// Variables & functions</span><br>
+<span class="kw">const</span> <span class="vc">name</span> = <span class="str">"Sanjog"</span>;<br>
+<span class="kw">let</span> <span class="vc">score</span> = <span class="num">0</span>;<br><br>
+<span class="kw">function</span> <span class="fn">greet</span>(person) {<br>
+&nbsp;&nbsp;<span class="kw">return</span> <span class="str">`Hello, ${person}!`</span>;<br>
+}<br><br>
+<span class="cm">// Events</span><br>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {<br>
+&nbsp;&nbsp;score++;<br>
+&nbsp;&nbsp;console.<span class="fn">log</span>(<span class="fn">greet</span>(name));<br>
+});<br><br>
+<span class="cm">// Arrays</span><br>
+<span class="kw">const</span> <span class="vc">skills</span> = [<span class="str">'HTML'</span>,<span class="str">'CSS'</span>,<span class="str">'JS'</span>];<br>
+skills.<span class="fn">forEach</span>(s => console.<span class="fn">log</span>(s));
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPTS -->
+<section class="section">
+  <div class="sec-label"><i class="fas fa-lightbulb"></i> Core Concepts</div>
+  <h2 class="sec-title">What You Need to Know</h2>
+  <p class="sec-sub">These are the essential building blocks of JavaScript that every developer uses every day.</p>
+  <div class="grid-3">
+    <div class="concept"><div class="concept-icon" style="background:#FFFBE6;color:#B45309"><i class="fas fa-box"></i></div><h4>Variables</h4><p>Store and reuse values with <code style="background:#FFFBE6;padding:.1rem .3rem;border-radius:4px">let</code>, <code style="background:#FFFBE6;padding:.1rem .3rem;border-radius:4px">const</code>, and <code style="background:#FFFBE6;padding:.1rem .3rem;border-radius:4px">var</code>. Variables can hold numbers, strings, arrays, objects, and more.</p></div>
+    <div class="concept"><div class="concept-icon" style="background:#EBF0FF;color:#264DE4"><i class="fas fa-cogs"></i></div><h4>Functions</h4><p>Reusable blocks of code. Call them whenever needed. Arrow functions <code style="background:#EBF0FF;padding:.1rem .3rem;border-radius:4px">() =&gt; {}</code> are modern shorthand.</p></div>
+    <div class="concept"><div class="concept-icon" style="background:#ECFDF5;color:#10B981"><i class="fas fa-list"></i></div><h4>Arrays</h4><p>Ordered lists of values. Use <code style="background:#ECFDF5;padding:.1rem .3rem;border-radius:4px">.map()</code>, <code style="background:#ECFDF5;padding:.1rem .3rem;border-radius:4px">.filter()</code>, <code style="background:#ECFDF5;padding:.1rem .3rem;border-radius:4px">.forEach()</code> to process them.</p></div>
+    <div class="concept"><div class="concept-icon" style="background:#FFF0EB;color:#E34F26"><i class="fas fa-cube"></i></div><h4>Objects</h4><p>Key-value pairs that represent real-world things. <code style="background:#FFF0EB;padding:.1rem .3rem;border-radius:4px">{ name: "JS", year: 1995 }</code></p></div>
+    <div class="concept"><div class="concept-icon" style="background:#F3EBFF;color:#7952B3"><i class="fas fa-mouse-pointer"></i></div><h4>DOM Events</h4><p>Listen for user actions — clicks, keypresses, form submissions — and respond with <code style="background:#F3EBFF;padding:.1rem .3rem;border-radius:4px">addEventListener</code>.</p></div>
+    <div class="concept"><div class="concept-icon" style="background:#FFFBE6;color:#B45309"><i class="fas fa-code-branch"></i></div><h4>Conditions</h4><p>Control flow with <code style="background:#FFFBE6;padding:.1rem .3rem;border-radius:4px">if/else</code>, ternary operators, and <code style="background:#FFFBE6;padding:.1rem .3rem;border-radius:4px">switch</code> statements.</p></div>
+  </div>
+</section>
+
+<!-- CODE EXAMPLES -->
+<section class="section">
+  <div class="sec-label"><i class="fas fa-code"></i> Run the Code</div>
+  <h2 class="sec-title">Live Code Examples</h2>
+  <p class="sec-sub">Click "Run" on any example to see JavaScript execute right here in the page.</p>
+  <div class="grid-2">
+    <!-- Variables -->
+    <div>
+      <div class="code-card">
+        <div class="code-header"><div class="code-dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div><span class="code-title">variables.js</span></div>
+        <div class="code-block">
+<span class="kw">const</span> <span class="vc">student</span> = {<br>
+&nbsp;&nbsp;name: <span class="str">"Sanjog Thapa"</span>,<br>
+&nbsp;&nbsp;age: <span class="num">22</span>,<br>
+&nbsp;&nbsp;skills: [<span class="str">"HTML"</span>,<span class="str">"CSS"</span>,<span class="str">"JS"</span>]<br>
+};<br><br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Name: ${student.name}`</span>);<br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Age: ${student.age}`</span>);<br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Skills: ${student.skills.join(", ")}`</span>);
+        </div>
+        <button class="btn-run" onclick="runCode('out1',()=>{const s={name:'Sanjog Thapa',age:22,skills:['HTML','CSS','JS']};return`> Name: ${s.name}\n> Age: ${s.age}\n> Skills: ${s.skills.join(', ')}`})"><i class="fas fa-play"></i> Run</button>
+        <div class="output" id="out1"></div>
+      </div>
+    </div>
+    <!-- Functions -->
+    <div>
+      <div class="code-card">
+        <div class="code-header"><div class="code-dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div><span class="code-title">functions.js</span></div>
+        <div class="code-block">
+<span class="cm">// Arrow function</span><br>
+<span class="kw">const</span> <span class="fn">calcGrade</span> = (score) => {<br>
+&nbsp;&nbsp;<span class="kw">if</span> (score >= <span class="num">90</span>) <span class="kw">return</span> <span class="str">'A'</span>;<br>
+&nbsp;&nbsp;<span class="kw">if</span> (score >= <span class="num">75</span>) <span class="kw">return</span> <span class="str">'B'</span>;<br>
+&nbsp;&nbsp;<span class="kw">if</span> (score >= <span class="num">60</span>) <span class="kw">return</span> <span class="str">'C'</span>;<br>
+&nbsp;&nbsp;<span class="kw">return</span> <span class="str">'F'</span>;<br>
+};<br><br>
+[<span class="num">95</span>, <span class="num">80</span>, <span class="num">65</span>, <span class="num">45</span>].<span class="fn">forEach</span>(s =><br>
+&nbsp;&nbsp;<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`${s} → Grade ${calcGrade(s)}`</span>)<br>
+);
+        </div>
+        <button class="btn-run" onclick="runCode('out2',()=>{const g=s=>s>=90?'A':s>=75?'B':s>=60?'C':'F';return[95,80,65,45].map(s=>`> ${s} → Grade ${g(s)}`).join('\n')})"><i class="fas fa-play"></i> Run</button>
+        <div class="output" id="out2"></div>
+      </div>
+    </div>
+    <!-- Array methods -->
+    <div>
+      <div class="code-card">
+        <div class="code-header"><div class="code-dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div><span class="code-title">arrays.js</span></div>
+        <div class="code-block">
+<span class="kw">const</span> <span class="vc">scores</span> = [<span class="num">85</span>,<span class="num">92</span>,<span class="num">78</span>,<span class="num">95</span>,<span class="num">61</span>,<span class="num">88</span>];<br><br>
+<span class="kw">const</span> <span class="vc">avg</span> = scores.<span class="fn">reduce</span>((a,b) => a+b,<span class="num">0</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ scores.length;<br><br>
+<span class="kw">const</span> <span class="vc">passing</span> = scores.<span class="fn">filter</span>(s => s >= <span class="num">75</span>);<br><br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Average: ${avg.toFixed(1)}`</span>);<br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Passing: ${passing.length}/6`</span>);<br>
+<span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Top: ${Math.max(...scores)}`</span>);
+        </div>
+        <button class="btn-run" onclick="runCode('out3',()=>{const sc=[85,92,78,95,61,88];const avg=sc.reduce((a,b)=>a+b,0)/sc.length;const p=sc.filter(s=>s>=75);return`> Average: ${avg.toFixed(1)}\n> Passing: ${p.length}/6\n> Top score: ${Math.max(...sc)}`})"><i class="fas fa-play"></i> Run</button>
+        <div class="output" id="out3"></div>
+      </div>
+    </div>
+    <!-- DOM -->
+    <div>
+      <div class="code-card">
+        <div class="code-header"><div class="code-dots"><span style="background:#FF5F57"></span><span style="background:#FEBC2E"></span><span style="background:#28C840"></span></div><span class="code-title">dom-events.js</span></div>
+        <div class="code-block">
+<span class="cm">// Get element & listen</span><br>
+<span class="kw">const</span> <span class="vc">btn</span> = document.<span class="fn">getElementById</span>(<span class="str">'myBtn'</span>);<br><br>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {<br>
+&nbsp;&nbsp;<span class="kw">const</span> <span class="vc">box</span> = document.<span class="fn">getElementById</span>(<span class="str">'box'</span>);<br>
+&nbsp;&nbsp;box.style.background = <span class="str">`hsl(${Math.random()*360},70%,60%)`</span>;<br>
+&nbsp;&nbsp;box.textContent = <span class="str">'🎨 Clicked!'</span>;<br>
+});
+        </div>
+        <button class="btn-run" onclick="runCode('out4',()=>'> event listener attached!\n> Click the box below 👇')"><i class="fas fa-play"></i> Run</button>
+        <div class="output" id="out4"></div>
+        <div id="domBox" onclick="this.style.background=`hsl(${Math.floor(Math.random()*360)},70%,60%)`;this.textContent='🎨 Clicked!';setTimeout(()=>{this.style.background='#1F2937';this.textContent='Click me!'},1200)" style="background:#1F2937;color:#F8C555;text-align:center;padding:1rem;cursor:pointer;font-weight:700;font-size:.9rem;margin:.5rem 1.25rem 1.1rem;border-radius:10px;transition:background .4s">Click me!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="sec-label"><i class="fas fa-rocket"></i> Projects</div>
+  <h2 class="sec-title">Build These Yourself</h2>
+  <p class="sec-sub">Three classic beginner JS projects — fully working, right here in the page.</p>
+  <div class="grid-3">
+    <!-- Calculator -->
+    <div class="demo-wrap">
+      <h4><i class="fas fa-calculator" style="color:var(--yellow);margin-right:.4rem"></i> Calculator</h4>
+      <div class="calc-screen"><div class="calc-expr" id="cExpr"></div><div class="calc-val" id="cVal">0</div></div>
+      <div class="calc-grid">
+        <button class="cb cc" onclick="ci('C')">C</button>
+        <button class="cb co" onclick="ci('/')" >÷</button>
+        <button class="cb co" onclick="ci('*')">×</button>
+        <button class="cb cbk" onclick="cbk()">←</button>
+        <button class="cb cn" onclick="ci('7')">7</button>
+        <button class="cb cn" onclick="ci('8')">8</button>
+        <button class="cb cn" onclick="ci('9')">9</button>
+        <button class="cb co" onclick="ci('-')">−</button>
+        <button class="cb cn" onclick="ci('4')">4</button>
+        <button class="cb cn" onclick="ci('5')">5</button>
+        <button class="cb cn" onclick="ci('6')">6</button>
+        <button class="cb co" onclick="ci('+')">+</button>
+        <button class="cb cn" onclick="ci('1')">1</button>
+        <button class="cb cn" onclick="ci('2')">2</button>
+        <button class="cb cn" onclick="ci('3')">3</button>
+        <button class="cb ceq" onclick="ceq()" style="grid-row:span 2">=</button>
+        <button class="cb cn" style="grid-column:span 2" onclick="ci('0')">0</button>
+        <button class="cb cn" onclick="ci('.')">.</button>
+      </div>
+    </div>
+
+    <!-- To-Do -->
+    <div class="demo-wrap">
+      <h4><i class="fas fa-check-square" style="color:var(--yellow);margin-right:.4rem"></i> To-Do List</h4>
+      <div class="todo-row">
+        <input class="todo-inp" id="todoInp" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTodo()"/>
+        <button class="todo-add" onclick="addTodo()">Add</button>
+      </div>
+      <ul class="todo-list" id="todoList"></ul>
+      <div class="t-count">Tasks: <span id="tCount">0</span></div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="quiz-card">
+      <div style="font-size:.75rem;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.85rem"><i class="fas fa-question-circle" style="color:var(--yellow);margin-right:.35rem"></i> JS Quick Quiz</div>
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-opts" id="quizOpts"></div>
+      <div class="quiz-msg" id="quizMsg"></div>
+      <div class="quiz-nav">
+        <div>
+          <div class="quiz-progress" id="quizProg">Question 1 of 5</div>
+          <div class="quiz-score" id="quizScore">Score: 0</div>
+        </div>
+        <button class="qbtn qbtn-primary" id="nextBtn" onclick="nextQ()" style="display:none">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-nav">
+  <a href="css.html">← CSS</a>
+  <a href="bootstrap.html" class="next">Next: Bootstrap →</a>
+</div>
+<footer><p>Built by <span>Sanjog Thapa</span> · CET138 Full Stack Development · ISMT College</p></footer>
+
+<script src="javascript_script.js"></script>
+<!-- <script>
+// Run code helper
+function runCode(id, fn){
+  const el=document.getElementById(id);
+  el.textContent=fn();
+  el.classList.add('show');
+}
+
+// Calculator
+let cE='',cR='0';
+function ci(v){
+  if(v==='C'){cE='';cR='0';}
+  else{
+    const ops=['+','-','*','/'];
+    if(ops.includes(v)&&ops.includes(cE.slice(-1)))cE=cE.slice(0,-1);
+    cE+=v;
+    try{cR=String(eval(cE));}catch(e){cR=cE;}
+  }
+  document.getElementById('cExpr').textContent=cE;
+  document.getElementById('cVal').textContent=cR;
+}
+function cbk(){
+  cE=cE.slice(0,-1);
+  try{cR=cE?String(eval(cE)):'0';}catch(e){cR=cE||'0';}
+  document.getElementById('cExpr').textContent=cE;
+  document.getElementById('cVal').textContent=cR;
+}
+function ceq(){
+  try{
+    const r=eval(cE);
+    document.getElementById('cExpr').textContent=cE+' =';
+    cR=String(r);document.getElementById('cVal').textContent=cR;cE=cR;
+  }catch(e){document.getElementById('cVal').textContent='Error';cE='';}
+}
+
+// Todo
+let todos=[];
+function addTodo(){
+  const inp=document.getElementById('todoInp');
+  const t=inp.value.trim();if(!t)return;
+  todos.push({id:Date.now(),text:t,done:false});
+  inp.value='';renderTodos();
+}
+function toggleTodo(id){todos=todos.map(t=>t.id===id?{...t,done:!t.done}:t);renderTodos();}
+function delTodo(id){todos=todos.filter(t=>t.id!==id);renderTodos();}
+function renderTodos(){
+  document.getElementById('todoList').innerHTML=todos.map(t=>`
+    <li class="t-item${t.done?' done':''}">
+      <input type="checkbox"${t.done?' checked':''} onchange="toggleTodo(${t.id})">
+      <span>${t.text}</span>
+      <button class="t-del" onclick="delTodo(${t.id})">✕</button>
+    </li>`).join('');
+  document.getElementById('tCount').textContent=todos.length;
+}
+
+// Quiz
+const questions=[
+  {q:'What does "DOM" stand for?',opts:['Data Object Model','Document Object Model','Dynamic Object Method','Document Oriented Markup'],ans:1},
+  {q:'Which keyword creates a constant in JS?',opts:['var','let','const','fix'],ans:2},
+  {q:'What does typeof "hello" return?',opts:['"hello"','string','text','char'],ans:1},
+  {q:'Which method adds an item to the end of an array?',opts:['push()','pop()','shift()','add()'],ans:0},
+  {q:'What does === check in JavaScript?',opts:['Value only','Type only','Value and type','Length'],ans:2},
+];
+let qIdx=0,score=0,answered=false;
+function renderQ(){
+  const q=questions[qIdx];
+  document.getElementById('quizQ').textContent=q.q;
+  document.getElementById('quizOpts').innerHTML=q.opts.map((o,i)=>
+    `<button class="quiz-opt" onclick="answerQ(${i})">${o}</button>`).join('');
+  document.getElementById('quizProg').textContent=`Question ${qIdx+1} of ${questions.length}`;
+  document.getElementById('quizMsg').textContent='';
+  document.getElementById('nextBtn').style.display='none';
+  answered=false;
+}
+function answerQ(i){
+  if(answered)return;answered=true;
+  const q=questions[qIdx];
+  const opts=document.querySelectorAll('.quiz-opt');
+  opts[i].classList.add(i===q.ans?'correct':'wrong');
+  if(i===q.ans){score++;document.getElementById('quizMsg').textContent='✓ Correct!';}
+  else{opts[q.ans].classList.add('correct');document.getElementById('quizMsg').textContent='✗ Incorrect.';}
+  document.getElementById('quizScore').textContent=`Score: ${score}`;
+  document.getElementById('nextBtn').style.display='inline-flex';
+  document.getElementById('nextBtn').textContent=qIdx<questions.length-1?'Next →':'Results';
+}
+function nextQ(){
+  qIdx++;
+  if(qIdx>=questions.length){
+    document.getElementById('quizQ').textContent=`Quiz complete! You scored ${score}/${questions.length}`;
+    document.getElementById('quizOpts').innerHTML='';
+    document.getElementById('quizMsg').textContent=score>=4?'🎉 Excellent!':score>=3?'👍 Good job!':'📖 Keep studying!';
+    document.getElementById('nextBtn').textContent='Restart';
+    document.getElementById('nextBtn').onclick=()=>{qIdx=0;score=0;renderQ();};
+    return;
+  }
+  renderQ();
+}
+renderQ();
+</script> -->
+</body>
+</html>
